@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans %}home_title{% endtrans %}</title>
+</head>
+<body>
+    <h1>{% trans %}home_header{% endtrans %}</h1>
+    <p>{% if g.user %}
+        {% trans %}You are logged in as{% endtrans %} {{ g.user["name"] }}.
+        {% else %}
+        {% trans %}You are not logged in{% endtrans %}
+    {% endif %}
+    </p>
+    <p>{% trans %}The current time is{% endtrans %} {{ current_time }}</p>
+</body>
+</html>
