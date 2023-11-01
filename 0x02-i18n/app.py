@@ -19,6 +19,7 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
+
 def get_user():
     """
     get user using id
@@ -39,7 +40,8 @@ def get_locale():
     """
     get local language
     """
-    if 'locale' in request.args and request.args['locale'] in app.config['LANGUAGES']:
+    if 'locale' in request.args and request.args['locale'] \
+            in app.config['LANGUAGES']:
         return request.args['locale']
     if g.user and g.user['locale'] in app.config['LANGUAGES']:
         return g.user['locale']
@@ -69,7 +71,8 @@ def index():
     """
     index page
     """
-    current_time = format_datetime(datetime.now(get_timezone()), format="medium")
+    current_time = format_datetime(datetime.now(get_timezone()),
+                                   format="medium")
     return render_template('index.html', current_time=current_time)
 
 

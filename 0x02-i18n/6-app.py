@@ -17,6 +17,7 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
+
 def get_user():
     user_id = request.args.get('login_as')
     if user_id and int(user_id) in users:
@@ -31,7 +32,8 @@ def before_request():
 
 @babel.localeselector
 def get_locale():
-    if 'locale' in request.args and request.args['locale'] in app.config['LANGUAGES']:
+    if 'locale' in request.args and request.args['locale'] \
+            in app.config['LANGUAGES']:
         return request.args['locale']
     if g.user and g.user['locale'] in app.config['LANGUAGES']:
         return g.user['locale']
