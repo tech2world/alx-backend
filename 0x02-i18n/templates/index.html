@@ -6,13 +6,12 @@
     <title>{% trans %}home_title{% endtrans %}</title>
 </head>
 <body>
-    <h1>{% trans %}home_header{% endtrans %}</h1>
-    <p>{% if g.user %}
-        {% trans %}You are logged in as{% endtrans %} {{ g.user["name"] }}.
-        {% else %}
-        {% trans %}You are not logged in{% endtrans %}
+    <h1>{{ _('home_header') }}</h1>
+    {% if g.user %}
+    <p>{{ _('logged_in_as', username=g.user.get('name', '')) }}</p>
+    {% else %}
+    <p>{{ _('not_logged_in') }}</p>
     {% endif %}
-    </p>
-    <p>{% trans %}The current time is{% endtrans %} {{ current_time }}</p>
+    <p>{{ _('The current time is') }} {{ current_time }}</p>
 </body>
 </html>

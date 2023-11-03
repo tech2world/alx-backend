@@ -28,11 +28,17 @@ def get_user():
 
 @app.before_request
 def before_request():
+    """
+    load before other functgins
+    """
     g.user = get_user()
 
 
 @babel.localeselector
 def get_locale():
+    """
+    determine the best match with our supported languages.
+    """
     if 'locale' in request.args and request.args['locale'] \
             in app.config['LANGUAGES']:
         return request.args['locale']
@@ -43,6 +49,9 @@ def get_locale():
 
 @babel.timezoneselector
 def get_timezone():
+    """
+    get timezone based on users current timezone
+    """
     if 'timezone' in request.args:
         try:
             return pytz.timezone(request.args['timezone'])
@@ -58,6 +67,9 @@ def get_timezone():
 
 @app.route('/')
 def index():
+    """
+    index page
+    """
     return render_template('7-index.html')
 
 

@@ -27,11 +27,17 @@ def get_user():
 
 @app.before_request
 def before_request():
+    """
+    load before other functions
+    """
     g.user = get_user()
 
 
 @babel.localeselector
 def get_locale():
+    """
+    determine the best match with our supported languages.
+    """
     if 'locale' in request.args and request.args['locale'] \
             in app.config['LANGUAGES']:
         return request.args['locale']
@@ -42,6 +48,9 @@ def get_locale():
 
 @app.route('/')
 def index():
+    """
+    index page
+    """
     return render_template('6-index.html')
 
 
