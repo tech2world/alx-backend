@@ -5,7 +5,6 @@ const jobs = [
     phoneNumber: '4153518780',
     message: 'This is the code 1234 to verify your account',
   },
-  // ... (other job data)
 ];
 
 const queue = kue.createQueue();

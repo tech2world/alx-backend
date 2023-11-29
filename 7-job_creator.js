@@ -1,7 +1,10 @@
 import kue from 'kue';
 
 const jobs = [
-  // ... (same as Task 6)
+  {
+    phoneNumber: '4153518780',
+    message: 'This is the code 1234 to verify your account',
+  },
 ];
 
 const queue = kue.createQueue();
